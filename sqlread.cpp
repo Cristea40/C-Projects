@@ -1,7 +1,6 @@
 #include <iostream>
-#include <mysql/mysql.h>
+#include <mysql.h>
 #include <stdio.h>
-
 
 
 int main() {
@@ -14,13 +13,13 @@ int main() {
     conn = mysql_init(NULL);
 
     
-    if (mysql_real_connect(conn, "your_host", "your_username", "your_password", "your_database", 0, NULL, 0) == NULL) {
+    if (mysql_real_connect(conn, "alice.home.server.paul.grozav.info", "root", "Giveme123", "Produse", 6373, NULL, 0) == NULL) {
         fprintf(stderr, "Failed to connect to MySQL: %s\n", mysql_error(conn));
         return 1;
     }
 
     
-    if (mysql_query(conn, "your_query") != 0) {
+    if (mysql_query(conn, "Select * from Produse;") != 0) {
         fprintf(stderr, "Failed to execute query: %s\n", mysql_error(conn));
         mysql_close(conn);
         return 1;
@@ -53,4 +52,5 @@ int main() {
 
     return 0;
 }
+
 
